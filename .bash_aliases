@@ -5,19 +5,29 @@ alias avupdate='sudo systemctl stop clamav-freshclam & sudo freshclam & sudo sys
 alias avscan='clamscan -r -i /'
 alias ipa="ifconfig | grep inet"
 alias mountvc='veracrypt ~/Documents/Encrypted.vc /media/veracrypt1'
+alias mountbk='veracrypt /media/seth/Backup/Documents.vc /media/veracrypt2'
 alias reference='cat ~/Code/aliases/reference.sh'
 alias pixel='~/Android/Sdk/emulator/emulator -avd OSINT -gpu host'
 alias pixelslow='~/Android/Sdk/emulator/emulator -avd OSINT'
 alias pubip='curl ipinfo.io'
 alias dirsize='du -h .'
 alias gpt="ollama run llama3"
-alias bkusb='rsync -avP --delete ~/Documents/ /media/seth/Backup/Documents/'
+alias aliasup="cp ~/Documents/Code/setup/.bash_aliases ~"
+
+# -------------------------------------
+# Simple backup and restore
+# -------------------------------------
+alias bkprofile='rsync -avP --delete ~/Documents/ ~/Backup/Documents/'
+alias rsprofile='rsync -avP --delete ~/Backup/Documents/ ~/Documents/'
+
+alias bkcontent='rsync -avP --delete ~/Content/ ~/Backup/Content/'
+alias rsprofile='rsync -avP --delete ~/Backup/Content/ ~/Content/'
+
 alias bkssh='rsync -avP --delete -e ssh ~/Documents/ seth@pinas.local:/home/seth/Backup/Documents/'
-alias rsusb='rsync -avP --delete /media/seth/Backup/Documents/ ~/Documents/'
 alias rsssh='rsync -avP --delete -e ssh seth@pinas.local:/home/seth/Backup/Documents/ ~/Documents/'
 
 # -------------------------------------
-# Updated from Chris Titus
+# Chris Titus shell customizations
 # -------------------------------------
 
 # To have colors for ls and all grep commands such as grep, egrep and zgrep

@@ -3,6 +3,11 @@
 pushd .
 cd ~
 
+# Set up the soft links to your backup directories
+#
+ln -s /media/veracrypt2 Documents
+ln -s /media/seth/Backup/Content Content
+
 # Copy over files from backup
 #
 pushd .
