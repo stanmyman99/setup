@@ -54,7 +54,7 @@ alias ...='cd ../..'
 alias la='ls -Alh'                # show hidden files
 alias ls='ls -aFh --color=always' # add colors and file type extensions
 #alias lx='ls -lXBh'               # sort by extension
-alias lk='ls -lSrh'               # sort by size
+# alias lk='ls -lSrh'               # sort by size
 #alias lc='ls -lcrh'               # sort by change time
 #alias lu='ls -lurh'               # sort by access time
 alias lr='ls -lRh'                # recursive ls
@@ -80,18 +80,18 @@ alias h="history | grep "
 # Alias's to show disk space and space used in a folder
 alias diskspace="du -S | sort -n -r | more"
 alias folders='du -h --max-depth=1'
-alias folderssort='find . -maxdepth 1 -type d -print0 | xargs -0 du -sk | sort -rn'
+#alias folderssort='find . -maxdepth 1 -type d -print0 | xargs -0 du -sk | sort -rn'
 alias tree='tree -CAhF --dirsfirst'
 alias treed='tree -CAFd'
-alias mountedinfo='df -hT'
+#alias mountedinfo='df -hT'
 
 # Alias's for archives
-alias mktar='tar -cvf'
-alias mkbz2='tar -cvjf'
-alias mkgz='tar -cvzf'
-alias untar='tar -xvf'
-alias unbz2='tar -xvjf'
-alias ungz='tar -xvzf'
+#alias mktar='tar -cvf'
+#alias mkbz2='tar -cvjf'
+#alias mkgz='tar -cvzf'
+#alias untar='tar -xvf'
+#alias unbz2='tar -xvjf'
+#alias ungz='tar -xvzf'
 
 #######################################################
 # SPECIAL FUNCTIONS
