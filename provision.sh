@@ -99,6 +99,8 @@ flatpak install flathub com.github.micahflee.torbrowser-launcher -y
 # Ollama
 # 
 curl -fsSL https://ollama.com/install.sh | sh
+ollama pull phi3 
+ollama pull tinyllama
 
 # Mullvad VPN
 #
