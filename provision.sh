@@ -21,8 +21,8 @@ cd ~/Code
 #mkdir Code
 #cd Code
 # 
-# git clone https://github.com/stanmyman99/aliases
-cp aliases/.bash_aliases ~
+# git clone https://github.com/stanmyman99/setup
+cp setup/.bash_aliases ~
 popd
 
 # Build and install the veracrypt command line
