@@ -11,6 +11,10 @@ alias pixelslow='~/Android/Sdk/emulator/emulator -avd OSINT'
 alias pubip='curl ipinfo.io'
 alias dirsize='du -h .'
 alias gpt="ollama run llama3"
+alias bkusb='rsync -avP --delete ~/Documents/ /media/seth/Backup/Documents/'
+alias bkssh='rsync -avP --delete -e ssh ~/Documents/ seth@pinas.local:/home/seth/Backup/Documents/'
+alias rsusb='rsync -avP --delete /media/seth/Backup/Documents/ ~/Documents/'
+alias rsssh='rsync -avP --delete -e ssh seth@pinas.local:/home/seth/Backup/Documents/ ~/Documents/'
 
 # -------------------------------------
 # Updated from Chris Titus
