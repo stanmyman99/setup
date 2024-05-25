@@ -96,6 +96,10 @@ flatpak install flathub com.github.micahflee.torbrowser-launcher -y
 # flatpak install flathub com.visualstudio.code -y
 # sudo apt install bleachbit -y
 
+# Ollama
+# 
+curl -fsSL https://ollama.com/install.sh | sh
+
 # Mullvad VPN
 #
 # Download the Mullvad signing key, Add the Mullvad repository server to apt, and install the package
