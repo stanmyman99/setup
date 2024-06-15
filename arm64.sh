@@ -2,6 +2,8 @@
 
 pushd .
 
+# add a change
+
 
 # Install Git and set Git's user and email attributes so that code can be checked in if needed
 #
