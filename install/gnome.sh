@@ -22,7 +22,7 @@ else
 
     # You can update this with 'gsettings get org.gnome.shell favorite-apps'
     gsettings set org.gnome.shell favorite-apps []
-    gsettings set org.gnome.shell favorite-apps "['pop-cosmic-applications.desktop', 'firefox.desktop', 'org.chromium.Chromium.desktop', 'com.brave.Browser.desktop', 'org.torproject.torbrowser-launcher.desktop', 'mullvad-vpn.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'org.keepassxc.KeePassXC.desktop', 'com.vscodium.codium.desktop', 'com.nextcloud.desktopclient.nextcloud.desktop', 'ch.protonmail.protonmail-bridge.desktop', 'io.elementary.appcenter.desktop', 'gnome-system-monitor.desktop', 'gnome-control-center.desktop']"
+    gsettings set org.gnome.shell favorite-apps "['pop-cosmic-applications.desktop', 'firefox.desktop', 'org.chromium.Chromium.desktop', 'com.brave.Browser.desktop', 'org.torproject.torbrowser-launcher.desktop', 'mullvad-vpn.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'org.keepassxc.KeePassXC.desktop', 'com.vscodium.codium.desktop', 'rpi-imager.desktop', 'com.nextcloud.desktopclient.nextcloud.desktop', 'ch.protonmail.protonmail-bridge.desktop', 'io.elementary.appcenter.desktop', 'gnome-system-monitor.desktop', 'gnome-control-center.desktop']"
 
     touch ~/.gnomeconfigured
 fi

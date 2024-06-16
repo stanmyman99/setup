@@ -13,6 +13,7 @@ else
 fi
 
 bash install/helper-apt.sh keepassxc "KeePassXC"
+bash install/helper-apt.sh rpi-imager "RPI Imager"
 
 sudo apt install multitail tree zoxide trash-cli fzf bash-completion -y >> ~/.provision.log
 bash install/helper-apt.sh android-tools-adb "Android Debugging Tools"
