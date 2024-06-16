@@ -15,7 +15,7 @@ fi
 bash install/helper-apt.sh keepassxc keepassxc "KeePassXC"
 bash install/helper-apt.sh rpi-imager rpi-imager "RPI Imager"
 
-sudo apt install multitail tree zoxide trash-cli fzf bash-completion -y >> ~/.provision.log
+sudo apt install multitail tree zoxide trash-cli fzf bash-completion -y >> ~/.provision.log 2>> ~/.provision.log
 bash install/helper-apt.sh android-tools-adb "Android Debugging Tools"
 
 bash install/helper-flatpak.sh com.nextcloud.desktopclient.nextcloud "NextCloud Desktop Client"

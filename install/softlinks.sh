@@ -11,7 +11,7 @@ pushd . > /dev/null
 if [[ -h ~/Documents ]]; then
     echo "Documents is already a symbolic link"
 else
-    echo "Createing the symbolic link for ~/Documents"
+    echo "Creating the symbolic link for ~/Documents"
     rmdir Documents
     ln -s ~/Nextcloud/Documents ~/Documents
 fi
@@ -20,7 +20,7 @@ fi
 if [[ -h ~/Private ]]; then
     echo "Private is already a symbolic link"
 else
-    echo "Createing the symbolic link for ~/Private"
+    echo "Creating the symbolic link for ~/Private"
     ln -s /media/veracrypt1 ~/Private
 fi
 
