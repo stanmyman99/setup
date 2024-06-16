@@ -10,10 +10,14 @@ then
     rm ~/.provision.log
 fi
 
-bash install/appframeworks.sh
-bash install/softlinks.sh
-bash install/veracrypt.sh
-bash install/gnome.sh
+bash install/osupdate.sh
 bash install/bash.sh
+bash install/appframeworks.sh
+bash install/apps.sh
+bash install/veracrypt.sh
+bash install/mullvad.sh
+bash install/ollama.sh
+bash install/softlinks.sh
+bash install/gnome.sh
 bash install/git.sh
 
