@@ -20,14 +20,14 @@ else
     gsettings set org.gnome.desktop.notifications show-banners false
     gsettings set org.gnome.desktop.interface show-battery-percentage true
 
+    # You can update this with 'gsettings get org.gnome.shell favorite-apps'
     gsettings set org.gnome.shell favorite-apps []
-    gsettings set org.gnome.shell favorite-apps "['pop-cosmic-applications.desktop', 'firefox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'org.keepassxc.KeePassXC.desktop', 'io.elementary.appcenter.desktop', 'gnome-control-center.desktop', 'gnome-system-monitor.desktop']"
+    gsettings set org.gnome.shell favorite-apps "['pop-cosmic-applications.desktop', 'firefox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'org.keepassxc.KeePassXC.desktop', 'com.vscodium.codium.desktop', 'com.nextcloud.desktopclient.nextcloud.desktop', 'io.elementary.appcenter.desktop', 'gnome-system-monitor.desktop', 'gnome-control-center.desktop']"
 
     touch ~/.gnomeconfigured
 fi
 
 echo "Completed gnome configuration"
 echo " "
-
 
 #gsettings set org.gnome.shell favorite-apps "['org.mozilla.firefox', 'org.gnome.Terminal.desktop', 'mullvadvpn.desktop', 'org.keepassxc.KeePassXC', 'org.standardnotes.standardnotes.desktop', 'org.onlyoffice.desktopeditors.desktop', 'org.electrum.electrum.desktop', 'org.freefilesync.FreeFileSync.desktop', 'org.gnome.gedit.desktop', 'org.gnome.Calculator.desktop', 'bleachbit-root.desktop', 'gnome-control-center.desktop']"
