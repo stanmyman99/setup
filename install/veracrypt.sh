@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "# ------------------------------------------------------------------------"
 echo "# Download, compile, and install the veracrypt CLI"
 echo "# ------------------------------------------------------------------------"
@@ -17,5 +19,7 @@ else
     sudo cp Main/veracrypt /usr/bin
 fi
 
-echo " "
 popd > /dev/null
+
+echo "Completed veracrypt installation"
+echo " "

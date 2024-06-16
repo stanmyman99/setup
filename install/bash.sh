@@ -1,8 +1,11 @@
+#!/bin/bash
+
 echo "# ------------------------------------------------------------------------"
-echo "# New device provisioing script"
+echo "# Bash configuration"
 echo "# ------------------------------------------------------------------------"
+
+cp ~/Code/setup/.bash_aliases ~
+source ~/.bashrc
+
+echo "Completed bash configuration "
 echo " "
-
-bash install/softlinks.sh
-bash install/veracrypt.sh
-

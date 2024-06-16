@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "# ------------------------------------------------------------------------"
 echo "# Softlinks"
 echo "# ------------------------------------------------------------------------"
@@ -22,5 +24,8 @@ else
     ln -s /media/veracrypt1 ~/Private
 fi
 
-echo " "
 popd > /dev/null
+
+echo "Completed softlink configuration"
+echo " "
+
