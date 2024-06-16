@@ -1,5 +1,5 @@
 
-flatpak info "$1" > /dev/null
+flatpak info "$1" > /dev/null 2>> /dev/null
 if [ $? -eq 0 ]
 then 
     echo "$2 is already installed"
