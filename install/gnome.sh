@@ -19,11 +19,15 @@ else
     gsettings set org.gnome.desktop.privacy old-files-age 1
     gsettings set org.gnome.desktop.notifications show-banners false
     gsettings set org.gnome.desktop.interface show-battery-percentage true
+
+    gsettings set org.gnome.shell favorite-apps []
+    gsettings set org.gnome.shell favorite-apps "['pop-cosmic-applications.desktop', 'firefox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'org.keepassxc.KeePassXC.desktop', 'io.elementary.appcenter.desktop', 'gnome-control-center.desktop', 'gnome-system-monitor.desktop']"
+
     touch ~/.gnomeconfigured
-    #sudo service bluetooth stop
-    #gsettings set org.gnome.shell favorite-apps []
-    #gsettings set org.gnome.shell favorite-apps "['org.mozilla.firefox', 'org.gnome.Terminal.desktop', 'mullvadvpn.desktop', 'org.keepassxc.KeePassXC', 'org.standardnotes.standardnotes.desktop', 'org.onlyoffice.desktopeditors.desktop', 'org.electrum.electrum.desktop', 'org.freefilesync.FreeFileSync.desktop', 'org.gnome.gedit.desktop', 'org.gnome.Calculator.desktop', 'bleachbit-root.desktop', 'gnome-control-center.desktop']"
 fi
 
 echo "Completed gnome configuration"
 echo " "
+
+
+#gsettings set org.gnome.shell favorite-apps "['org.mozilla.firefox', 'org.gnome.Terminal.desktop', 'mullvadvpn.desktop', 'org.keepassxc.KeePassXC', 'org.standardnotes.standardnotes.desktop', 'org.onlyoffice.desktopeditors.desktop', 'org.electrum.electrum.desktop', 'org.freefilesync.FreeFileSync.desktop', 'org.gnome.gedit.desktop', 'org.gnome.Calculator.desktop', 'bleachbit-root.desktop', 'gnome-control-center.desktop']"
