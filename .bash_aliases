@@ -1,10 +1,15 @@
 # -------------------------------------
+# Update the path to accomodate openai whisper
+# -------------------------------------
+export PATH="$HOME/.local/bin:$PATH"
+
+# -------------------------------------
 # Original aliases
 # -------------------------------------
 alias avupdate='sudo systemctl stop clamav-freshclam & sudo freshclam & sudo systemctl start clamav-freshclam'
 alias avscan='clamscan -r -i /'
 alias ipa="ifconfig | grep inet"
-alias mountvc='veracrypt ~/Documents/Encrypted.vc /media/veracrypt1'
+alias mountpv='veracrypt ~/Documents/Private.vc /media/veracrypt1'
 alias mountbk='veracrypt /media/seth/Backup/Documents.vc /media/veracrypt2'
 alias reference='cat ~/Code/aliases/reference.sh'
 alias pixel='~/Android/Sdk/emulator/emulator -avd OSINT -gpu host'

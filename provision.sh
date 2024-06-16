@@ -20,4 +20,6 @@ bash install/ollama.sh
 bash install/softlinks.sh
 bash install/gnome.sh
 bash install/git.sh
+bash install/python.sh
+bash install/whisper.sh
 

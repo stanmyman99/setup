@@ -8,8 +8,8 @@
 
 if command -v "$1" > /dev/null 2> /dev/null
 then
-    echo "$2 is already installed"
+    echo "$3 is already installed"
 else
-    echo "Installing $2..."
-    sudo apt install "$3" -y >> ~/.provision.log 2>> ~/.provision.log
+    echo "Installing $3..."
+    sudo apt install "$2" -y >> ~/.provision.log 2>> ~/.provision.log
 fi
