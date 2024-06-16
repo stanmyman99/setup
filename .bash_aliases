@@ -16,8 +16,9 @@ alias pixel='~/Android/Sdk/emulator/emulator -avd OSINT -gpu host'
 alias pixelslow='~/Android/Sdk/emulator/emulator -avd OSINT'
 alias pubip='curl ipinfo.io'
 alias dirsize='du -h .'
-alias gpt="ollama run llama3"
 alias aliasup="cp ~/Documents/Code/setup/.bash_aliases ~"
+alias gpt="ollama run llama3"
+alias transcribe="whisper --model small"
 
 # -------------------------------------
 # Simple backup and restore
