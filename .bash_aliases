@@ -19,6 +19,7 @@ alias dirsize='du -h .'
 alias aliasup="cp ~/Documents/Code/setup/.bash_aliases ~"
 alias gpt="ollama run llama3"
 alias transcribe="whisper --model small"
+alias priv="cd ~/Private"
 
 # -------------------------------------
 # Simple backup and restore
