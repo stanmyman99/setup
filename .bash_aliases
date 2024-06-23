@@ -20,6 +20,7 @@ alias aliasup="cp ~/Documents/Code/setup/.bash_aliases ~"
 alias gpt="ollama run llama3"
 alias transcribe="whisper --model small"
 alias priv="cd ~/Private"
+alias contacts="python3 ~/Code/setup/utils/printvcf.py ~/Private/Contacts/contacts.vcf"
 
 # -------------------------------------
 # Simple backup and restore
