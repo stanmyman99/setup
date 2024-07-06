@@ -32,6 +32,13 @@ else
     ln -s /media/veracrypt1 ~/Private
 fi
 
+if [[ -h ~/Credentials ]]; then
+    echo "Credentials is already a symbolic link"
+else
+    echo "Creating the symbolic link for ~/Credentials"
+    ln -s /media/veracrypt3 ~/Credentials
+fi
+
 popd > /dev/null
 
 echo "Completed softlink configuration"
