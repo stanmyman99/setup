@@ -11,6 +11,7 @@ then
     echo "$2 is already installed"
 else   
     echo "Installing $2"
-    flatpak install --user "$1" -y >> ~/.provision.log
+    #flatpak install --user "$1" -y >> ~/.provision.log
+    flatpak install flathub "$1" -y >> ~/.provision.log
 fi
 
