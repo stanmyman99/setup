@@ -7,6 +7,7 @@ echo " "
 
 bash install/osupdate.sh
 bash install/bash.sh
+bash install/utilities.sh
 bash install/appframeworks.sh
 bash install/apps.sh
 bash install/veracrypt.sh

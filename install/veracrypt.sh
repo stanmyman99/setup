@@ -10,19 +10,27 @@ if [[ -f /usr/bin/veracrypt ]]
 then
     echo "Veracrypt is already installed"
 else
+    bash install/helper-apt.sh g++ g++ "g++ compiler"
+    bash install/helper-apt.sh libfuse-dev libfuse-dev "libfuse-dev"
+    bash install/helper-apt.sh pkg-config pkg-config "pkg-config"
+    bash install/helper-apt.sh yasm yasm "yasm"
+    bash install/helper-apt.sh libwxgtk3.2-dev libwxgtk3.2-dev "libwxgtk3.2-dev"
+    bash install/helper-apt.sh libpcsclite-dev libpcsclite-dev "libpcsclite-dev"
+
     mkdir ~/Apps/veracrypt >> ~/.provision.log
     cd ~/Apps/veracrypt >> ~/.provision.log
 
-    echo "Installing veracrypt dependencies"
-    sudo apt install g++ libfuse-dev pkg-config yasm libwxbase3.0-dev libpcsclite-dev -y >> ~/.provision.log
+    VERSION="VeraCrypt_1.26.7"
 
-    echo "Downloading veracrypt..."
-    wget https://www.veracrypt.fr/code/VeraCrypt/snapshot/VeraCrypt_1.26.7.tar.gz
-    tar -xvf VeraCrypt_1.26.7.tar.gz >> ~/.provision.log
+    if [[ ! -f ./$VERSION.tar.gz ]]; then
+        echo "Downloading veracrypt..."
+        wget https://www.veracrypt.fr/code/VeraCrypt/snapshot/$VERSION.tar.gz >> ~/.provision.log
+        tar -xvf $VERSION.tar.gz >> ~/.provision.log
+    fi
 
     echo "Compiling veracrypt..."
-    cd VeraCrypt_1.26.7/src > /dev/null
-    make NOGUI=1 >> ~/.provision.log
+    cd $VERSION/src > /dev/null
+    make NOGUI=1
 
     echo "Installing veracrypt..."
     sudo cp Main/veracrypt /usr/bin >> ~/.provision.log
