@@ -59,13 +59,17 @@ adb shell pm disable-user --user 0 com.google.audio.hearing.visualization.access
 adb shell pm disable-user --user 0 com.google.android.health.connect.backuprestore
 adb shell pm disable-user --user 0 com.google.android.overlay.gmsconfig.gsa
 adb shell pm disable-user --user 0 com.google.android.overlay.gmsconfig.common
-adb shell pm disable-user --user 0 com.google.android.networkstack.tethering.overlay
 adb shell pm disable-user --user 0 com.google.mainline.adservices
 adb shell pm disable-user --user 0 com.android.hotwordenrollment.okgoogle
 adb shell pm disable-user --user 0 com.android.hotwordenrollment.xgoogle
-adb shell pm disable-user --user 0 com.google.android.networkstack.tethering
 adb shell pm disable-user --user 0 com.google.android.as
 adb shell pm disable-user --user 0 com.google.android.as.oss
+
+# These two tethering apps have to be enabled or the settings app wont load
+#
+#adb shell pm disable-user --user 0 com.google.android.networkstack.tethering.overlay
+#adb shell pm disable-user --user 0 com.google.android.networkstack.tethering
+
 
 #adb shell pm disable-user --user 0 com.google.android.overlay.modules.permissioncontroller.forframework
 #adb shell pm disable-user --user 0 com.google.android.printservice.recommendation

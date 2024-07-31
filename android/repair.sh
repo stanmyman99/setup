@@ -1,0 +1,192 @@
+#!/bin/bash
+
+
+echo "------------------------------------------------------------------------"
+echo "repairing other google apps"
+echo "------------------------------------------------------------------------"
+#adb shell pm enable --user 0 com.google.android.ondevicepersonalization.services
+#adb shell pm enable --user 0 com.google.android.apps.youtube.music
+#adb shell pm enable --user 0 com.google.android.adservices.api
+#adb shell pm enable --user 0 com.google.audio.hearing.visualization.accessibility.scribe
+#adb shell pm enable --user 0 com.google.android.health.connect.backuprestore
+#adb shell pm enable --user 0 com.google.android.overlay.gmsconfig.gsa
+#adb shell pm enable --user 0 com.google.android.overlay.gmsconfig.common
+#adb shell pm enable --user 0 com.google.android.networkstack.tethering.overlay
+#adb shell pm enable --user 0 com.google.mainline.adservices
+#adb shell pm enable --user 0 com.android.hotwordenrollment.okgoogle
+#adb shell pm enable --user 0 com.android.hotwordenrollment.xgoogle
+#adb shell pm enable --user 0 com.google.android.networkstack.tethering
+#adb shell pm enable --user 0 com.google.android.as
+#adb shell pm enable --user 0 com.google.android.as.oss
+
+# safe to remvoe
+#adb shell pm disable-user --user 0 com.google.android.overlay.gmsconfig.gsa
+#adb shell pm disable-user --user 0 com.google.android.overlay.gmsconfig.common
+
+# required by the settings app
+#adb shell pm disable-user --user 0 com.google.android.networkstack.tethering.overlay
+#adb shell pm disable-user --user 0 com.google.android.networkstack.tethering
+
+adb shell pm enable --user 0 com.samsung.android.settingshelper
+adb shell pm enable --user 0 com.samsung.internal.systemui.navbar.gestural_no_hint
+adb shell pm enable --user 0 com.samsung.internal.systemui.navbar.sec_gestural
+adb shell pm enable --user 0 com.samsung.internal.systemui.navbar.sec_gestural_no_hint
+
+
+echo "------------------------------------------------------------------------"
+echo " Restore Samsung "
+echo "------------------------------------------------------------------------"
+#adb shell pm enable --user 0 com.samsung.android.app.settings.bixby
+##adb shell pm enable --user 0 android.autoinstalls.config.samsung
+#adb shell pm enable --user 0 com.monotype.android.font.samsungone
+#adb shell pm enable --user 0 com.samsung.aasaservice
+#adb shell pm enable --user 0 com.samsung.accessibility
+#adb shell pm enable --user 0 com.samsung.advp.imssettings
+#adb shell pm enable --user 0 com.samsung.android.accessibility.talkback
+#adb shell pm enable --user 0 com.samsung.android.aircommandmanager
+#adb shell pm enable --user 0 com.samsung.android.allshare.service.mediashare
+#adb shell pm enable --user 0 com.samsung.android.ardrawing
+#adb shell pm enable --user 0 com.samsung.android.arzone
+#adb shell pm enable --user 0 com.samsung.android.audiomirroring
+#adb shell pm enable --user 0 com.samsung.android.authfw
+#adb shell pm enable --user 0 com.samsung.android.aware.service
+#adb shell pm enable --user 0 com.samsung.android.bbc.bbcagent
+#adb shell pm enable --user 0 com.samsung.android.beaconmanager
+#adb shell pm enable --user 0 com.samsung.android.biometrics.app.setting
+#adb shell pm enable --user 0 com.samsung.android.bixby.agent
+#adb shell pm enable --user 0 com.samsung.android.bixbyvision.framework
+#adb shell pm enable --user 0 com.samsung.android.bixby.wakeup
+#adb shell pm enable --user 0 com.samsung.android.bluelightfilter
+#adb shell pm enable --user 0 com.samsung.android.calendar
+#adb shell pm enable --user 0 com.samsung.android.callassistant
+#adb shell pm enable --user 0 com.samsung.android.callbgprovider
+#adb shell pm enable --user 0 com.samsung.android.cidmanager
+#adb shell pm enable --user 0 com.samsung.android.ConnectivityUxOverlay
+#adb shell pm enable --user 0 com.samsung.android.container
+#adb shell pm enable --user 0 com.samsung.android.da.daagent
+#adb shell pm enable --user 0 com.samsung.android.dbsc
+#adb shell pm enable --user 0 com.samsung.android.dialer
+#adb shell pm enable --user 0 com.samsung.android.dqagent
+#adb shell pm enable --user 0 com.samsung.android.dsms
+#adb shell pm enable --user 0 com.samsung.android.dynamiclock
+#adb shell pm enable --user 0 com.samsung.android.easysetup
+#adb shell pm enable --user 0 com.samsung.android.fast
+#adb shell pm enable --user 0 com.samsung.android.fmm
+#adb shell pm enable --user 0 com.samsung.android.forest
+#adb shell pm enable --user 0 com.samsung.android.galaxy
+#adb shell pm enable --user 0 com.samsung.android.galaxycontinuity
+#adb shell pm enable --user 0 com.samsung.android.gru
+#adb shell pm enable --user 0 com.samsung.android.hdmapp
+#adb shell pm enable --user 0 com.samsung.android.homemode
+#adb shell pm enable --user 0 com.samsung.android.honeyboard
+#adb shell pm enable --user 0 com.samsung.android.incall.contentprovider
+#adb shell pm enable --user 0 com.samsung.android.incallui
+#adb shell pm enable --user 0 com.samsung.android.inputshare
+#adb shell pm enable --user 0 com.samsung.android.intellivoiceservice
+#adb shell pm enable --user 0 com.samsung.android.keycustomizationinfobackupservice
+#adb shell pm enable --user 0 com.samsung.android.kgclient
+#adb shell pm enable --user 0 com.samsung.android.kidsinstaller
+#adb shell pm enable --user 0 com.samsung.android.kmxservice
+#adb shell pm enable --user 0 com.samsung.android.location
+#adb shell pm enable --user 0 com.samsung.android.lool
+#adb shell pm enable --user 0 com.samsung.android.mapsagent
+#adb shell pm enable --user 0 com.samsung.android.mcfds
+#adb shell pm enable --user 0 com.samsung.android.mcfserver
+#adb shell pm enable --user 0 com.samsung.android.mdecservice
+#adb shell pm enable --user 0 com.samsung.android.mdm
+#adb shell pm enable --user 0 com.samsung.android.mdx
+#adb shell pm enable --user 0 com.samsung.android.mdx.kit
+#adb shell pm enable --user 0 com.samsung.android.mdx.quickboard
+#adb shell pm enable --user 0 com.samsung.android.messaging
+#adb shell pm enable --user 0 com.samsung.android.mobileservice
+#adb shell pm enable --user 0 com.samsung.android.mtp
+#adb shell pm enable --user 0 com.samsung.android.net.wifi.wifiguider
+#adb shell pm enable --user 0 com.samsung.android.networkdiagnostic
+#adb shell pm enable --user 0 com.samsung.android.networkstack
+#adb shell pm enable --user 0 com.samsung.android.networkstack.tethering.overlay
+#adb shell pm enable --user 0 com.samsung.android.oneconnect
+#adb shell pm enable --user 0 com.samsung.android.privacydashboard
+#adb shell pm enable --user 0 com.samsung.android.provider.filterprovider
+#adb shell pm enable --user 0 com.samsung.android.providers.contacts
+#adb shell pm enable --user 0 com.samsung.android.providers.factory
+#adb shell pm enable --user 0 com.samsung.android.providers.media
+#adb shell pm enable --user 0 com.samsung.android.providers.trash
+#adb shell pm enable --user 0 com.samsung.android.rampart
+#adb shell pm enable --user 0 com.samsung.android.rubin.app
+#adb shell pm enable --user 0 com.samsung.android.samsungpositioning
+#adb shell pm enable --user 0 com.samsung.android.scloud
+#adb shell pm enable --user 0 com.samsung.android.scpm
+#adb shell pm enable --user 0 com.samsung.android.scs
+#adb shell pm enable --user 0 com.samsung.android.sdk.handwriting
+#adb shell pm enable --user 0 com.samsung.android.sdk.ocr
+#adb shell pm enable --user 0 com.samsung.android.sdm.config
+#adb shell pm enable --user 0 com.samsung.android.secsoundpicker
+#adb shell pm enable --user 0 com.samsung.android.server.wifi.mobilewips
+#adb shell pm enable --user 0 com.samsung.android.service.aircommand
+#adb shell pm enable --user 0 com.samsung.android.service.airviewdictionary
+#adb shell pm enable --user 0 com.samsung.android.service.livedrawing
+#adb shell pm enable --user 0 com.samsung.android.service.peoplestripe
+#adb shell pm enable --user 0 com.samsung.android.service.stplatform
+#adb shell pm enable --user 0 com.samsung.android.setting.multisound
+#adb shell pm enable --user 0 com.samsung.android.settingshelper
+#adb shell pm enable --user 0 com.samsung.android.shortcutbackupservice
+#adb shell pm enable --user 0 com.samsung.android.smartcallprovider
+#adb shell pm enable --user 0 com.samsung.android.smartface
+#adb shell pm enable --user 0 com.samsung.android.smartface.overlay
+#adb shell pm enable --user 0 com.samsung.android.smartmirroring
+#adb shell pm enable --user 0 com.samsung.android.smartsuggestions
+#adb shell pm enable --user 0 com.samsung.android.smartswitchassistant
+#adb shell pm enable --user 0 com.samsung.android.sm.devicesecurity
+#adb shell pm enable --user 0 com.samsung.android.spayfw
+#adb shell pm enable --user 0 com.samsung.android.stickercenter
+#adb shell pm enable --user 0 com.samsung.android.svcagent
+#adb shell pm enable --user 0 com.samsung.android.themecenter
+#adb shell pm enable --user 0 com.samsung.android.video
+#adb shell pm enable --user 0 com.samsung.android.visionintelligence
+#adb shell pm enable --user 0 com.samsung.android.visualars
+#adb shell pm enable --user 0 com.samsung.android.voc
+#adb shell pm enable --user 0 com.samsung.android.wallpaper.res
+#adb shell pm enable --user 0 com.samsung.android.wcmurlsnetworkstack
+#adb shell pm enable --user 0 com.samsung.android.widget.pictureframe
+#adb shell pm enable --user 0 com.samsung.android.wifi.ai
+#adb shell pm enable --user 0 com.samsung.android.wifi.decrease.scan.interval.resources
+#adb shell pm enable --user 0 com.samsung.android.wifi.h2e.resources
+#adb shell pm enable --user 0 com.samsung.android.wifi.increase.scan.interval.resources
+#adb shell pm enable --user 0 com.samsung.android.wifi.p2paware.resources
+#adb shell pm enable --user 0 com.samsung.android.wifi.resources
+#adb shell pm enable --user 0 com.samsung.android.wifi.saeupgradeoffload.resources
+#adb shell pm enable --user 0 com.samsung.android.wifi.softap.resources
+#adb shell pm enable --user 0 com.samsung.android.wifi.softapwpathree.resources
+#adb shell pm enable --user 0 com.samsung.app.newtrim
+#adb shell pm enable --user 0 com.samsung.cmh
+#adb shell pm enable --user 0 com.samsung.faceservice
+#adb shell pm enable --user 0 com.samsung.gpuwatchapp
+#adb shell pm enable --user 0 com.samsung.internal.systemui.navbar.gestural_no_hint
+#adb shell pm enable --user 0 com.samsung.internal.systemui.navbar.sec_gestural
+#adb shell pm enable --user 0 com.samsung.internal.systemui.navbar.sec_gestural_no_hint
+#adb shell pm enable --user 0 com.samsung.ipservice
+#adb shell pm enable --user 0 com.samsung.klmsagent
+#adb shell pm enable --user 0 com.samsung.oda.service
+#adb shell pm enable --user 0 com.samsung.safetyinformation
+#adb shell pm enable --user 0 com.samsung.sec.android.application.csc
+#adb shell pm enable --user 0 com.samsung.SMT
+#adb shell pm enable --user 0 com.samsung.SMT.lang_de_de_f00
+#adb shell pm enable --user 0 com.samsung.SMT.lang_en_gb_f00
+#adb shell pm enable --user 0 com.samsung.SMT.lang_en_us_l03
+#adb shell pm enable --user 0 com.samsung.SMT.lang_es_es_f00
+#adb shell pm enable --user 0 com.samsung.SMT.lang_es_us_f00
+#adb shell pm enable --user 0 com.samsung.SMT.lang_fr_fr_f00
+#adb shell pm enable --user 0 com.samsung.SMT.lang_hi_in_f00
+#adb shell pm enable --user 0 com.samsung.SMT.lang_it_it_f00
+#adb shell pm enable --user 0 com.samsung.SMT.lang_pl_pl_f00
+#adb shell pm enable --user 0 com.samsung.SMT.lang_ru_ru_f00
+#adb shell pm enable --user 0 com.samsung.SMT.lang_th_th_f00
+#adb shell pm enable --user 0 com.samsung.SMT.lang_vi_vn_f00
+#adb shell pm enable --user 0 com.samsung.SMT.lang_zh_cn_f00
+#adb shell pm enable --user 0 com.samsung.SMT.lang_zh_hk_f00
+#adb shell pm enable --user 0 com.samsung.SMT.lang_zh_tw_f00
+#adb shell pm enable --user 0 com.samsung.sree
+#adb shell pm enable --user 0 com.samsung.storyservice
+#adb shell pm enable --user 0 com.sec.android.app.samsungapps
+
+
