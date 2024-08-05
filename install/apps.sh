@@ -15,7 +15,7 @@ fi
 # Remove any unwanted apps that are installed by default
 #
 echo "Removing unwanted apps..."
-echo "Removing Libre Office..."`
+echo "Removing Libre Office..."
 sudo apt-get remove --purge "libreoffice*" -y >> ~/.provision.log 2>> ~/.provision.log
 
 echo "Installing desired apps..."
