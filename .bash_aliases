@@ -11,17 +11,18 @@ alias avscan='clamscan -r -i /'
 alias ipa="ifconfig | grep inet"
 alias mountpv='veracrypt ~/Nextcloud/Backup/Private.vc /media/veracrypt1'
 alias mountcred='veracrypt ~/Nextcloud/Backup/Credentials.vc /media/veracrypt3'
-alias reference='cat ~/Code/setup/reference.sh'
 alias pixel='~/Android/Sdk/emulator/emulator -avd OSINT -gpu host'
 alias pixelslow='~/Android/Sdk/emulator/emulator -avd OSINT'
 alias pubip='curl ipinfo.io'
 alias dirsize='du -h .'
-alias aliasup="cp ~/Code/setup/.bash_aliases ~"
+alias aliasup="cp ~/Code/setup/.bash_aliases ~ && source ~/.bashrc"
 alias gpt="ollama run llama3"
 alias transcribe="whisper --model small"
 alias priv="cd ~/Private"
 alias contacts="python3 ~/Code/setup/utils/printvcf.py ~/Documents/Contacts/contacts.vcf"
 alias hotels="python3 ~/Code/setup/utils/hotels.py ~/Documents/Contacts/hotels.csv"
+alias ref='display_reference_file'
+alias sshkey='xclip -sel clip < /home/seth/.ssh/sethflared.pub && xclip -o -sel clip'
 
 # -------------------------------------
 # Simple backup and restore
@@ -34,6 +35,27 @@ alias rsprofile='rsync -avP --delete ~/Backup/Content/ ~/Content/'
 
 alias bkssh='rsync -avP --delete -e ssh ~/Documents/ seth@pinas.local:/home/seth/Backup/Documents/'
 alias rsssh='rsync -avP --delete -e ssh seth@pinas.local:/home/seth/Backup/Documents/ ~/Documents/'
+
+# -------------------------------------
+# Simple backup and restore
+# -------------------------------------
+function display_reference_file() {
+    local filename="/home/seth/Code/setup/reference/$1.sh"
+
+    if [ -z "$1" ]; then
+        echo " "
+        echo "Usage: ref [topic]"
+        echo " "
+        echo "You can pick from the following topics"
+        echo "--------------------------------------"
+        find /home/seth/Code/setup/reference -maxdepth 1 -type f -exec basename {} \; | sed 's/\.[^.]*$//'
+        echo " "
+#    elif [ ! -f "$filename" ]; then
+#        echo "Could not find file: $filename"
+    else
+        highlight -O ansi $filename
+    fi
+}
 
 # -------------------------------------
 # Chris Titus shell customizations
