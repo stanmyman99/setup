@@ -120,7 +120,7 @@ alias h="history | grep "
 #alias rebootforce='sudo shutdown -r -n now'
 
 # Alias's to show disk space and space used in a folder
-alias diskspace="du -S | sort -n -r | more"
+alias diskspace="du -Sh | sort -n -r"
 alias folders='du -h --max-depth=1'
 #alias folderssort='find . -maxdepth 1 -type d -print0 | xargs -0 du -sk | sort -rn'
 alias tree='tree -CAhF --dirsfirst'
