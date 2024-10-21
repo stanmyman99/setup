@@ -23,6 +23,7 @@ alias contacts="python3 ~/Code/setup/utils/printvcf.py ~/Documents/Contacts/cont
 alias hotels="python3 ~/Code/setup/utils/hotels.py ~/Documents/Contacts/hotels.csv"
 alias ref='display_reference_file'
 alias sshkey='xclip -sel clip < /home/seth/.ssh/sethflared.pub && xclip -o -sel clip'
+alias ssklockdown='sudo cp ~/Code/setup/templates/sshd_config_soft /etc/ssh/sshd_config && sudo systemctl restart ssh'
 
 # -------------------------------------
 # Simple backup and restore
