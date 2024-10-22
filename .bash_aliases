@@ -59,6 +59,25 @@ function syncdown() {
 }
 
 # Displays reference material, like cliff notes for man pages
+function provision() {
+    local filename="/home/seth/Code/setup/install/$1.sh"
+
+    if [ -z "$1" ]; then
+        echo " "
+        echo "Usage: provision [module]"
+        echo " "
+        echo "You can pick from the following modules"
+        echo "--------------------------------------"
+        find /home/seth/Code/setup/install -maxdepth 1 -type f -exec basename {} \; | sed 's/\.[^.]*$//'
+        echo " "
+    else
+        pushd ~/Code/setup
+        bash install/$1.sh"
+        popd
+    fi
+}
+
+# Displays reference material, like cliff notes for man pages
 function display_reference_file() {
     local filename="/home/seth/Code/setup/reference/$1.sh"
 
