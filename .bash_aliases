@@ -71,7 +71,8 @@ function provision() {
         find /home/seth/Code/setup/install -maxdepth 1 -type f -exec basename {} \; | sed 's/\.[^.]*$//'
         echo " "
     else
-        pushd ~/Code/setup
+        pushd .
+        cd ~/Code/setup
         bash "install/$1.sh"
         popd
     fi
