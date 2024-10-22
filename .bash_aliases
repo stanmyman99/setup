@@ -72,7 +72,7 @@ function provision() {
         echo " "
     else
         pushd ~/Code/setup
-        bash install/$1.sh"
+        bash "install/$1.sh"
         popd
     fi
 }
