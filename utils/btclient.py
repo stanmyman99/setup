@@ -56,10 +56,6 @@ manufacturer_ids = {
 def get_manufacturer_name(manufacturer_id):
     return manufacturer_ids.get(manufacturer_id, f"Unknown Manufacturer ({hex(manufacturer_id)})")
 
-# Test the lookup function
-manufacturer_id = 0x004C  # Example: Apple
-print(f"Manufacturer ID {manufacturer_id}: {get_manufacturer_name(manufacturer_id)}")
-
 class btdevice:
     def __init__(
         self,
@@ -70,7 +66,8 @@ class btdevice:
         rssi: Optional[int] = None,
         service_data: Optional[Dict[str, bytes]] = None,
         service_uuids: Optional[List[str]] = None,
-        tx_power: Optional[int] = None
+        tx_power: Optional[int] = None,
+        debug: bool = False  # Optional debugging flag
     ):
         # Store the direct variables
         self.bledevice = d 
@@ -84,17 +81,23 @@ class btdevice:
 
         # Store the derived variables
         self.details = d.details
-        self.props = d.details['props']
-        self.address = d.address
-        self.addresstype = self.props['AddressType']
-        self.connected = self.props['Connected']
-        self.alias = self.props['Alias']
-        self.paired = self.props['Paired']
-        mdata = self.props['ManufacturerData']
-        self.manufacturer = list(mdata.keys())[0]
+        self.props = d.details.get('props', {})
+        self.address = d.address if hasattr(d, 'address') else None
+        self.addresstype = self.props.get('AddressType', None)
+        self.connected = self.props.get('Connected', None)
+        self.alias = self.props.get('Alias', None)
+        self.paired = self.props.get('Paired', None)
 
-        #print(self.props)
-        
+        # Manufacturer Data (check if it's not empty)
+        mdata = self.props.get('ManufacturerData', {})
+        if mdata:
+            self.manufacturer = list(mdata.keys())[0]
+        else:
+            self.manufacturer = None  # Handle missing data
+
+        # Debugging print
+        if debug:
+            print(self.props)
 
     def __repr__(self):
         return (
