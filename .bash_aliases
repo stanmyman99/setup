@@ -6,27 +6,29 @@ export PATH="$HOME/.local/bin:$PATH"
 # -------------------------------------
 # Aliases
 # -------------------------------------
-alias pubip='curl ipinfo.io'
-alias ipa="ifconfig | grep inet"
-alias ref='display_reference_file'
 alias aliasup="cp ~/Code/setup/.bash_aliases ~ && source ~/.bashrc"
+alias avupdate='sudo systemctl stop clamav-freshclam & sudo freshclam & sudo systemctl start clamav-freshclam'
+alias bknas='pushd . && cd ~/Documents && syncup seth@sethnas.local:~/nas/seth'
+alias avscan='clamscan -r -i /'
+alias contacts="python3 ~/Code/setup/utils/printvcf.py ~/Documents/Contacts/contacts.vcf"
 alias dirsize='du -h .'
 alias diskspace="du -Sh | sort -n -r"
-alias folders='du -h --max-depth=1'
-alias tree='tree -CAhF --dirsfirst'
-alias treed='tree -CAFd'
-alias sshkey='xclip -sel clip < /home/seth/.ssh/sethflared.pub && xclip -o -sel clip'
-alias sshlockdown='sudo cp ~/Code/setup/templates/sshd_config_soft /etc/ssh/sshd_config && sudo systemctl restart ssh'
-alias contacts="python3 ~/Code/setup/utils/printvcf.py ~/Documents/Contacts/contacts.vcf"
-alias hotels="python3 ~/Code/setup/utils/hotels.py ~/Documents/Contacts/hotels.csv"
-alias pixel='~/Android/Sdk/emulator/emulator -avd OSINT -gpu host'
-alias pixelslow='~/Android/Sdk/emulator/emulator -avd OSINT'
 alias gpt="ollama run llama3"
-alias transcribe="whisper --model small"
+alias ipa="ifconfig | grep inet"
+alias ref='display_reference_file'
+alias folders='du -h --max-depth=1'
+alias hotels="python3 ~/Code/setup/utils/hotels.py ~/Documents/Contacts/hotels.csv"
 alias mountpv='veracrypt ~/Nextcloud/Backup/Private.vc /media/veracrypt1'
 alias mountcred='veracrypt ~/Nextcloud/Backup/Credentials.vc /media/veracrypt3'
-alias avupdate='sudo systemctl stop clamav-freshclam & sudo freshclam & sudo systemctl start clamav-freshclam'
-alias avscan='clamscan -r -i /'
+alias pixel='~/Android/Sdk/emulator/emulator -avd OSINT -gpu host'
+alias pixelslow='~/Android/Sdk/emulator/emulator -avd OSINT'
+alias pubip='curl ipinfo.io'
+alias sshkey='xclip -sel clip < /home/seth/.ssh/sethflared.pub && xclip -o -sel clip'
+alias sshlockdown='sudo cp ~/Code/setup/templates/sshd_config_soft /etc/ssh/sshd_config && sudo systemctl restart ssh'
+alias transcribe="whisper --model small"
+alias tree='tree -CAhF --dirsfirst'
+alias treed='tree -CAFd'
+
 
 # Syncup command - uploads the current folder to a destination folder such that the destination mirrors the current folder
 function syncup() {
