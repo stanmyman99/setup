@@ -1,70 +1,56 @@
 import socket
 import json
-import time
 from collections import defaultdict
+import time
 
-# Define a simple DeviceTracker class
-class DeviceTracker:
-    def __init__(self):
-        self.devices = {}  # Stores information about devices by MAC address
+# Dictionary to hold the device data
+devices = {}
 
-    def track_device(self, device_info):
-        mac_address = device_info['mac_address']
-        current_time = device_info['timestamp']
+def handle_device_data(data):
+    print(f'handle_device_data')
+    device = json.loads(data)
+    address = device["address"]
+    timestamp = device["timestamp"]
 
-        # If it's the first time seeing this device, add it
-        if mac_address not in self.devices:
-            self.devices[mac_address] = {
-                "name": device_info['name'],
-                "first_seen": current_time,
-                "count": 1,
-                "timestamps": [current_time]
-            }
-        else:
-            # Increment the count and add the timestamp if 15 minutes have passed
-            device_data = self.devices[mac_address]
-            last_seen_time = device_data["timestamps"][-1]
+    # If the device is already in the list, update its data
+    if address in devices:
+        devices[address]['count'] += 1
+        devices[address]['last_seen'] = timestamp
+    else:
+        # Add the new device with the first-seen timestamp
+        devices[address] = {
+            'first_seen': timestamp,
+            'last_seen': timestamp,
+            'count': 1,
+            'props': device.get('props', {}),
+            'service_data': device.get('service_data', {}),
+            'platform_data': device.get('platform_data', {}),
+        }
 
-            if current_time - last_seen_time > 15 * 60:  # 15 minutes in seconds
-                device_data["count"] += 1
-                device_data["timestamps"].append(current_time)
+def start_server():
+    server_address = ('localhost', 5000)
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    server_socket.bind(server_address)
 
-        print(f"Device {mac_address} tracked: {self.devices[mac_address]}")
+    print("Server started, waiting for data...")
 
-    def get_device_report(self):
-        return self.devices
+    while True:
+        data, address = server_socket.recvfrom(4096)
+        if data:
+            handle_device_data(data)
+            print(f"Device data received from {address}: {data.decode()}")
 
-# Server that receives and processes device information
-def start_server(host="127.0.0.1", port=65432):
-    device_tracker = DeviceTracker()
+        # Print devices every 10 seconds for monitoring
+        time.sleep(10)
+        print("\nDevices tracked so far:")
+        for addr, info in devices.items():
+            first_seen = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(info['first_seen']))
+            last_seen = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(info['last_seen']))
+            print(f"Device {addr}: First Seen: {first_seen}, Last Seen: {last_seen}, Count: {info['count']}")
+            print(f"Props: {info['props']}")
+            print(f"Service Data: {info['service_data']}")
+            print(f"Platform Data: {info['platform_data']}")
+            print("-" * 40)
 
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
-        server_socket.bind((host, port))
-        server_socket.listen()
-
-        print("Server is listening for incoming connections...")
-
-        while True:
-            conn, addr = server_socket.accept()
-            with conn:
-                print(f"Connected by {addr}")
-                data = conn.recv(1024)  # Receive device data (max 1024 bytes)
-                
-                if not data:
-                    break
-                
-                # Parse the incoming device info
-                device_info = json.loads(data.decode('utf-8'))
-                device_tracker.track_device(device_info)
-
-                # Optionally, send back a response or log something
-                conn.sendall(b"Device info received")
-
-            # Optionally print a summary of tracked devices
-            print("Current devices tracked:")
-            for mac, info in device_tracker.get_device_report().items():
-                print(f"{mac}: {info}")
-
-if __name__ == "__main__":
-    print("Starting up the Bluetooth monitoring server")
-    start_server()
+# Start the server
+start_server()

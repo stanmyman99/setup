@@ -2,7 +2,10 @@ import argparse
 import asyncio
 from bleak import BleakScanner
 from typing import Optional, Dict, Tuple, List
-
+import socket
+import time
+import json
+import base64
 
 # Manufacturer ID Lookup Table
 manufacturer_ids = {
@@ -55,6 +58,24 @@ manufacturer_ids = {
 # Example function to get Manufacturer Name by ID
 def get_manufacturer_name(manufacturer_id):
     return manufacturer_ids.get(manufacturer_id, f"Unknown Manufacturer ({hex(manufacturer_id)})")
+
+class CustomJSONEncoder(json.JSONEncoder):
+    def default(self, o):
+        print(type(o))
+        if isinstance(o, bytearray):
+            # Convert bytearray to base64-encoded string
+            return base64.b64encode(o).decode('utf-8')
+        # If it's not a bytearray, let the default encoder handle it
+        return super().default(o)
+
+def encode64(bytes):
+    return base64.b64encode(bytes).decode('utf-8')
+
+# Convert to JSON with custom encoder
+def serialize_device(device):
+    #return json.dumps(device.to_dict(), cls=CustomJSONEncoder)
+    data = device.to_dict()
+    return json.dumps(data)
 
 class btdevice:
     def __init__(
@@ -136,35 +157,24 @@ class btdevice:
     def print_short(self):
         print(f"{self.local_name}: {get_manufacturer_name(self.manufacturer)}")
 
-
-'''
     def to_dict(self):
-        """Convert the instance to a dictionary representation."""
         return {
-            "bledevice": self.bledevice,
+            "address": self.address,
             "local_name": self.local_name,
-            "manufacturer_data": self.manufacturer_data,
-            "platform_data": self.platform_data,
+            "manufacturer": self.manufacturer,
+            "timestamp": time.time(),  # Add a timestamp when sending data
             "rssi": self.rssi,
-            "service_data": self.service_data,
             "service_uuids": self.service_uuids,
             "tx_power": self.tx_power,
+            "connected": self.connected,
+            "paired": self.paired,
+            "alias": self.alias
+            #"props": self.props,  # Include self.props
+            #"manufacturer_data": encode64(self.manufacturer_data),  # bytearray is still here
+            #"manufacturer_data": self.manufacturer_data,  # bytearray is still here
+            #"service_data": self.service_data,  # bytearray is still here
+            #"platform_data": self.platform_data  # bytearray is still here
         }
-
-    @classmethod
-    def from_dict(cls, data: dict):
-        """Create an instance from a dictionary."""
-        return cls(
-            bledevice=data.get("bledevice"),
-            local_name=data.get("local_name"),
-            manufacturer_data=data.get("manufacturer_data", {}),
-            platform_data=data.get("platform_data", ()),
-            rssi=data.get("rssi"),
-            service_data=data.get("service_data", {}),
-            service_uuids=data.get("service_uuids", []),
-            tx_power=data.get("tx_power")
-        )
-'''
 
 def print_device_list(devicelist, title):
     print("_" * len(title))
@@ -181,17 +191,13 @@ def print_device_list(devicelist, title):
     print("_" * 80)
     print()
 
+def report_device(device, client_socket, server_address):
+    sdevice = serialize_device(device)
+    print(f"Sending device: {device}")
+    print(f"Sending device data: {sdevice}")
+    client_socket.sendto(sdevice.encode('utf-8'), server_address)
 
-async def main(args: argparse.Namespace):
-    print("scanning for 5 seconds, please wait...")
-
-    devices = await BleakScanner.discover(
-        return_adv=True,
-        #timeout=1.0,
-        service_uuids=args.services,
-        cb=dict(use_bdaddr=args.macos_use_bdaddr),
-    )
-
+def process_and_report(client_socket, server_address, devices):
     privatedevices = []
     publicdevices = []
     for d, a in devices.values():
@@ -200,11 +206,44 @@ async def main(args: argparse.Namespace):
             privatedevices.append(device)
         else:
             publicdevices.append(device)
+        report_device(device, client_socket, server_address)
+    client_socket.close()
 
-    print_device_list(publicdevices, "Public Devices")
-    print_device_list(privatedevices, "Private Devices")
+    reportstr = f"Reported {len(publicdevices) + len(privatedevices)} devices, {len(publicdevices)} public and {len(privatedevices)} private."
+    print("_" * len(reportstr))
+    print(reportstr)
+    print("_" * len(reportstr))
 
-    print(f"Total devices: {len(privatedevices) + len(publicdevices)}")
+    #print_device_list(publicdevices, "Public Devices")
+    #print_device_list(privatedevices, "Private Devices")
+    
+
+async def main(args: argparse.Namespace):
+    # Connect to the server
+    server_address = ('localhost', 5000)
+    client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+    # Run scanning for 1 hour
+    start_time = time.time()
+    elapsed_time = 0
+
+    while elapsed_time < 3600:
+        print("scanning for 5 seconds, please wait...")
+        #scanner = BleakScanner()
+        #await scanner.start()
+        devices = await BleakScanner.discover(
+            return_adv=True,
+            #timeout=1.0,
+            service_uuids=args.services,
+            cb=dict(use_bdaddr=args.macos_use_bdaddr),
+        )
+        #await scanner.stop()
+        process_and_report(client_socket, server_address, devices)
+        elapsed_time = time.time() - start_time
+        print(f"Elapsed time: {elapsed_time:.1f} seconds")
+        print("Pausing for 5 seconds before the next scan...")
+        await asyncio.sleep(5)  # Wait for 5 seconds before scanning again
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

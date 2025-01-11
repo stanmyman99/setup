@@ -28,6 +28,7 @@ alias sshlockdown='sudo cp ~/Code/setup/templates/sshd_config_soft /etc/ssh/sshd
 alias transcribe="whisper --model small"
 alias tree='tree -CAhF --dirsfirst'
 alias treed='tree -CAFd'
+alias update='sudo apt update && sudo apt upgrade -y'
 
 
 # Syncup command - uploads the current folder to a destination folder such that the destination mirrors the current folder
