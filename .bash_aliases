@@ -29,7 +29,7 @@ alias transcribe="whisper --model small"
 alias tree='tree -CAhF --dirsfirst'
 alias treed='tree -CAFd'
 alias update='sudo apt update && sudo apt upgrade -y'
-
+alias dollama='sudo docker run -d --gpus all -v ollama:/root/.ollama -p 11434:11434 --security-opt=no-new-privileges --cap-drop=ALL --cap-add=SYS_NICE --memory=8g --memory-swap=8g --cpus=4 --read-only --name ollama ollama/ollama'
 
 # Syncup command - uploads the current folder to a destination folder such that the destination mirrors the current folder
 function syncup() {
